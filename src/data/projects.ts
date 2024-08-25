@@ -123,10 +123,16 @@ export const projects: IProject[] = [
 		tags: ['#html', '#css', '#javascript'],
 		description:
 			'A landing page for CoinDay, designed and developed using HTML, CSS, and JavaScript.',
-		img: '/coinday/1coinday.png',
+		img: 'https://res.cloudinary.com/breivaco/image/upload/v1724614632/simplefolio/coinday/ljmzko6rl8mucx3zj5bd.png',
 		to: '/projects/coinday',
-		gallery: ['/coinday/1coinday.png', '/coinday/2coinday.png'],
-		webImages: ['/coinday/1coinday.png', '/coinday/2coinday.png'],
+		gallery: [
+			'https://res.cloudinary.com/breivaco/image/upload/v1724614632/simplefolio/coinday/ljmzko6rl8mucx3zj5bd.png',
+			'https://res.cloudinary.com/breivaco/image/upload/v1724614634/simplefolio/coinday/ullh5q7kopwqvy5ixpjq.png',
+		],
+		webImages: [
+			'https://res.cloudinary.com/breivaco/image/upload/v1724614632/simplefolio/coinday/ljmzko6rl8mucx3zj5bd.png',
+			'https://res.cloudinary.com/breivaco/image/upload/v1724614634/simplefolio/coinday/ullh5q7kopwqvy5ixpjq.png',
+		],
 	},
 	{
 		id: 6,
@@ -135,17 +141,17 @@ export const projects: IProject[] = [
 		tags: ['#javascript', '#react'],
 		description:
 			"A landing page for Autermow, a company specializing in lawn care, built with React to showcase their expert services and transform your yard into the neighborhood's pride.",
-		img: '/autermow/1autermow.png',
+		img: 'https://res.cloudinary.com/breivaco/image/upload/v1724614636/simplefolio/autermow/v0aenukerunqmxwnlxsh.png',
 		to: '/projects/autermow',
 		gallery: [
-			'/autermow/1autermow.png',
-			'/autermow/2autermow.png',
-			'/autermow/3autermow.png',
+			'https://res.cloudinary.com/breivaco/image/upload/v1724614636/simplefolio/autermow/v0aenukerunqmxwnlxsh.png',
+			'https://res.cloudinary.com/breivaco/image/upload/v1724614638/simplefolio/autermow/dcql7pgdoxvb5vm9d48v.png',
+			'https://res.cloudinary.com/breivaco/image/upload/v1724614630/simplefolio/autermow/vtppuiewz90yun4u56r1.png',
 		],
 		webImages: [
-			'/autermow/1autermow.png',
-			'/autermow/2autermow.png',
-			'/autermow/3autermow.png',
+			'https://res.cloudinary.com/breivaco/image/upload/v1724614636/simplefolio/autermow/v0aenukerunqmxwnlxsh.png',
+			'https://res.cloudinary.com/breivaco/image/upload/v1724614638/simplefolio/autermow/dcql7pgdoxvb5vm9d48v.png',
+			'https://res.cloudinary.com/breivaco/image/upload/v1724614630/simplefolio/autermow/vtppuiewz90yun4u56r1.png',
 		],
 	},
 	{
@@ -155,17 +161,17 @@ export const projects: IProject[] = [
 		tags: ['#javascript', '#react', '#nodejs', '#express', '#mongodb'],
 		description:
 			'A web application, built with React, that connects landlords and renters by displaying available apartments with location and detailed information in an easy-to-use interface.',
-		img: '/stayke/1stayke.png',
+		img: 'https://res.cloudinary.com/breivaco/image/upload/v1679864230/simplefolio/stayke_-_Asset_1_zjsdk2.png',
 		to: '/projects/stayke',
 		gallery: [
-			'/stayke/1stayke.png',
-			'/stayke/2stayke.png',
-			'/stayke/3stayke.png',
+			'https://res.cloudinary.com/breivaco/image/upload/v1679864230/simplefolio/stayke_-_Asset_1_zjsdk2.png',
+			'https://res.cloudinary.com/breivaco/image/upload/v1679864227/simplefolio/stayke_-_Asset_2_ko6yfo.png',
+			'https://res.cloudinary.com/breivaco/image/upload/v1679864203/simplefolio/stayke_-_Asset_3_artrs4.png',
 		],
 		webImages: [
-			'/stayke/1stayke.png',
-			'/stayke/2stayke.png',
-			'/stayke/3stayke.png',
+			'https://res.cloudinary.com/breivaco/image/upload/v1679864230/simplefolio/stayke_-_Asset_1_zjsdk2.png',
+			'https://res.cloudinary.com/breivaco/image/upload/v1679864227/simplefolio/stayke_-_Asset_2_ko6yfo.png',
+			'https://res.cloudinary.com/breivaco/image/upload/v1679864203/simplefolio/stayke_-_Asset_3_artrs4.png',
 		],
 	},
 ];
