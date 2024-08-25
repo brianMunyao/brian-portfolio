@@ -210,7 +210,24 @@ const Container = styled.div`
 				display: grid;
 				grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
 				grid-gap: 20px;
+
 				.img {
+					display: flex;
+					justify-content: center;
+					align-items: center;
+					position: relative;
+					border-radius: 10px;
+				}
+				.img img {
+					width: 96%;
+					max-height: 96%;
+					padding: 2%;
+					object-fit: contain;
+					border-radius: 5px;
+					overflow: hidden;
+				}
+
+				/* .img {
 					position: relative;
 					padding-top: 75%;
 					border-radius: 10px;
@@ -224,7 +241,7 @@ const Container = styled.div`
 						object-fit: contain;
 						border-radius: 5px;
 					}
-				}
+				} */
 				/* position: relative;
 				width: 90%;
 				margin: 0 5%;

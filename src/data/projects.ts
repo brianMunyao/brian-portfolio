@@ -116,12 +116,56 @@ export const projects: IProject[] = [
 			'https://res.cloudinary.com/breivaco/image/upload/v1679864180/simplefolio/pm_-_Asset_7_qkwvzv.png',
 		],
 	},
-	// {
-	// 	name: 'Notera - Notes and ToDoList',
-	// 	color: '#4834d4',
-	// 	tags: ['#reactnative', '#realm-db'],
-	// 	description:
-	// 		'Notera is an intuitive and user-friendly productivity app that lets you take notes, create to-do lists, and effortlessly organize tasks all in one place.',
-	// 	img: 'https://res.cloudinary.com/breivaco/image/upload/v1676284853/simplefolio/notera_bbndri.png',
-	// },
+	{
+		id: 5,
+		name: 'Coinday - Landing Page',
+		color: '#dcad4d',
+		tags: ['#html', '#css', '#javascript'],
+		description:
+			'A landing page for CoinDay, designed and developed using HTML, CSS, and JavaScript.',
+		img: '/coinday/1coinday.png',
+		to: '/projects/coinday',
+		gallery: ['/coinday/1coinday.png', '/coinday/2coinday.png'],
+		webImages: ['/coinday/1coinday.png', '/coinday/2coinday.png'],
+	},
+	{
+		id: 6,
+		name: 'Autermow - Landing Page',
+		color: '#50ac29',
+		tags: ['#javascript', '#react'],
+		description:
+			"A landing page for Autermow, a company specializing in lawn care, built with React to showcase their expert services and transform your yard into the neighborhood's pride.",
+		img: '/autermow/1autermow.png',
+		to: '/projects/autermow',
+		gallery: [
+			'/autermow/1autermow.png',
+			'/autermow/2autermow.png',
+			'/autermow/3autermow.png',
+		],
+		webImages: [
+			'/autermow/1autermow.png',
+			'/autermow/2autermow.png',
+			'/autermow/3autermow.png',
+		],
+	},
+	{
+		id: 7,
+		name: 'Stayke',
+		color: '#1b8bd1',
+		tags: ['#javascript', '#react', '#nodejs', '#express', '#mongodb'],
+		description:
+			'A web application, built with React, that connects landlords and renters by displaying available apartments with location and detailed information in an easy-to-use interface.',
+		img: '/stayke/1stayke.png',
+		to: '/projects/stayke',
+		gallery: [
+			'/stayke/1stayke.png',
+			'/stayke/2stayke.png',
+			'/stayke/3stayke.png',
+		],
+		webImages: [
+			'/stayke/1stayke.png',
+			'/stayke/2stayke.png',
+			'/stayke/3stayke.png',
+		],
+	},
 ];
