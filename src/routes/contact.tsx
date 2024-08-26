@@ -61,7 +61,8 @@ const Container = styled.div`
 
 	.contact-con {
 		margin: auto;
-		width: 400px;
+		max-width: 400px;
+		width: 100%;
 		display: flex;
 		flex-direction: column;
 		gap: 15px;
