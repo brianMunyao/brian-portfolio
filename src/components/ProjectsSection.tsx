@@ -10,32 +10,8 @@ const ProjectsSection = () => {
 		<Container id="projects" className="app-padding">
 			<p className="title p-title">Key Projects</p>
 			<p className="subtitle">
-				Here you will find some of my notable personal projects that I
-				created over the years
+				Here you will find some of my notable personal projects that I created over the years.
 			</p>
-
-			{/* <div className="projects-grid">
-				<div className="project-card">
-					<img
-						src="/coinday/1coinday.png"
-						alt="Project 1 Image"
-						className="project-image"
-					/>
-					<div className="project-info">
-						<h3 className="project-title">Project Title 1</h3>
-						<p className="project-description">
-							A landing page for CoinDay, designed and developed
-							using HTML, CSS, and JavaScript, to enable users to
-							earn real money and gift cards.
-						</p>
-						<ul className="project-tech">
-							<li>HTML</li>
-							<li>CSS</li>
-							<li>JavaScript</li>
-						</ul>
-					</div>
-				</div>
-			</div> */}
 
 			<div className="projects-grid">
 				{projects.map((project, i) => (
@@ -43,11 +19,10 @@ const ProjectsSection = () => {
 						<div className="project-card">
 							<img
 								src={project.img}
-								alt={project.name + ' main image'}
+								alt={`${project.name} main image`}
 								className="project-image"
-								style={{
-									background: project.color,
-								}}
+								style={{ background: project.color }}
+								loading="lazy"
 							/>
 							<div className="project-info">
 								<h3 className="project-title">
@@ -56,7 +31,6 @@ const ProjectsSection = () => {
 								<p className="project-description">
 									{project.description}
 								</p>
-
 								<div className="project-tags">
 									{project.tags.map((tag, i) => (
 										<Skill key={i} tag={tag} brief={true} />
@@ -130,6 +104,7 @@ const Container = styled(motion.div)`
 			padding: 10px 30px;
 		}
 	}
+
 	@media (max-width: 550px) {
 		.projects-grid {
 			grid-template-columns: 1fr;
