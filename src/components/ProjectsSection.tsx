@@ -10,7 +10,8 @@ const ProjectsSection = () => {
 		<Container id="projects" className="app-padding">
 			<p className="title p-title">Key Projects</p>
 			<p className="subtitle">
-				Here you will find some of my notable personal projects that I created over the years.
+				Here you will find some of my notable personal projects that I
+				created over the years.
 			</p>
 
 			<div className="projects-grid">

@@ -33,7 +33,7 @@ const Skill = ({ tag, brief = false }: { tag: string; brief?: boolean }) => {
 			textcolor={skill.textColor}
 			backcolor={skill.backColor}
 		>
-			<skill.Logo />
+			{skill?.Logo && <skill.Logo />}
 			{skill.name}
 
 			{skill?.isNew && <span className="new-tag">New!</span>}

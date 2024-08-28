@@ -1,7 +1,7 @@
 import { IconType } from 'react-icons';
 
 interface ISkill {
-	Logo: IconType;
+	Logo?: IconType;
 	name: string;
 	tag: string;
 	backColor: string;

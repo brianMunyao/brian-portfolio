@@ -21,10 +21,11 @@ import {
 	SiVisualstudiocode,
 	SiRedux,
 	SiDotnet,
+	SiAngular,
 } from 'react-icons/si';
 import { TbBrandReactNative } from 'react-icons/tb';
 import { ImGit } from 'react-icons/im';
-import { AiOutlineConsoleSql,  } from 'react-icons/ai';
+import { AiOutlineConsoleSql } from 'react-icons/ai';
 import ISkill from '../types/ISkill';
 import { RiNextjsFill } from 'react-icons/ri';
 
@@ -42,6 +43,7 @@ export const frameworks = [
 	'#nodejs',
 	'#expressjs',
 	'#flask',
+	'#angular',
 	'#dotnet',
 ];
 export const databases = [
@@ -237,6 +239,19 @@ export const skills: ISkill[] = [
 		name: 'Redux',
 		tag: '#redux',
 		backColor: '#764abc',
+		textColor: '#f6f6f6',
+	},
+	{
+		Logo: SiAngular,
+		name: 'Angular',
+		tag: '#angular',
+		backColor: '#d6002f',
+		textColor: '#f6f6f6',
+	},
+	{
+		name: 'GSAP',
+		tag: '#gsap',
+		backColor: '#14d946',
 		textColor: '#f6f6f6',
 	},
 ];

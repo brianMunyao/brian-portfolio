@@ -64,7 +64,11 @@ const NavBar = ({ scrolled }: { scrolled: boolean }) => {
 
 				<div className="nav-links">
 					{navLinks.map((navLink) => (
-						<a href={navLink.to} className="nav-link">
+						<a
+							href={navLink.to}
+							onClick={toggleNavOpened}
+							className="nav-link"
+						>
 							{navLink.label}
 						</a>
 					))}
@@ -173,6 +177,10 @@ const Container = styled(motion.div)<{
 		align-items: center;
 		flex-direction: column;
 		transition: all 0.2s linear;
+
+		.nav-links {
+			flex-direction: column;
+		}
 	}
 	.mobile-nav-links .close-nav-icon {
 		font-size: 40px;
@@ -199,6 +207,9 @@ const Container = styled(motion.div)<{
 		.burger,
 		.mobile-nav-links {
 			display: flex;
+			.nav-links {
+				display: flex;
+			}
 		}
 	}
 `;

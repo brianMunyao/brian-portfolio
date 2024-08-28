@@ -65,11 +65,11 @@ const ServicesSection = () => {
 					<p className="service-title">Backend Apps</p>
 					<p className="service-desc">
 						Good at leveraging frameworks like{' '}
-						<span className="highight">Node.js</span>,{' '}
-						<span className="highlight">Flask</span>, and{' '}
-						<span className="highlight">Express.js</span> to build
-						robust and scalable applications that seamlessly handle
-						complex data processing and server-side functionalities.
+						<span className="highlight">Node.js</span>,{' '}
+						<span className="highlight">Express.js</span>, and{' '}
+						<span className="highlight">Flask</span> to build robust
+						and scalable applications that seamlessly handle complex
+						data processing and server-side functionalities.
 					</p>
 				</motion.div>
 

@@ -46,23 +46,23 @@ export const projects: IProject[] = [
 		],
 	},
 	{
-		id: 2,
-		name: 'Stadium Ticket Booking',
-		color: '#ffd700',
-		tags: ['#react', '#flask', '#sqlite'],
+		id: 7,
+		name: 'Stayke',
+		color: '#1b8bd1',
+		tags: ['#javascript', '#react', '#nodejs', '#express', '#mongodb'],
 		description:
-			'A web-based application allows users to easily browse upcoming events and securely purchase tickets online, ensuring a seamless and stress-free experience.',
-		img: 'https://res.cloudinary.com/breivaco/image/upload/v1679864215/simplefolio/booking_-_Asset_8_wkpzso.png',
-		to: '/projects/booking',
+			'A web application, built with React, that connects landlords and renters by displaying available apartments with location and detailed information in an easy-to-use interface.',
+		img: 'https://res.cloudinary.com/breivaco/image/upload/v1679864230/simplefolio/stayke_-_Asset_1_zjsdk2.png',
+		to: '/projects/stayke',
 		gallery: [
-			'https://res.cloudinary.com/breivaco/image/upload/v1679864215/simplefolio/booking_-_Asset_8_wkpzso.png',
-			'https://res.cloudinary.com/breivaco/image/upload/v1679864192/simplefolio/booking_-_Asset_10_vhc6j0.png',
-			'https://res.cloudinary.com/breivaco/image/upload/v1679864164/simplefolio/booking_-_Asset_9_wcbjco.png',
+			'https://res.cloudinary.com/breivaco/image/upload/v1679864230/simplefolio/stayke_-_Asset_1_zjsdk2.png',
+			'https://res.cloudinary.com/breivaco/image/upload/v1679864227/simplefolio/stayke_-_Asset_2_ko6yfo.png',
+			'https://res.cloudinary.com/breivaco/image/upload/v1679864203/simplefolio/stayke_-_Asset_3_artrs4.png',
 		],
 		webImages: [
-			'https://res.cloudinary.com/breivaco/image/upload/v1679864215/simplefolio/booking_-_Asset_8_wkpzso.png',
-			'https://res.cloudinary.com/breivaco/image/upload/v1679864192/simplefolio/booking_-_Asset_10_vhc6j0.png',
-			'https://res.cloudinary.com/breivaco/image/upload/v1679864164/simplefolio/booking_-_Asset_9_wcbjco.png',
+			'https://res.cloudinary.com/breivaco/image/upload/v1679864230/simplefolio/stayke_-_Asset_1_zjsdk2.png',
+			'https://res.cloudinary.com/breivaco/image/upload/v1679864227/simplefolio/stayke_-_Asset_2_ko6yfo.png',
+			'https://res.cloudinary.com/breivaco/image/upload/v1679864203/simplefolio/stayke_-_Asset_3_artrs4.png',
 		],
 	},
 	{
@@ -94,6 +94,27 @@ export const projects: IProject[] = [
 			'https://res.cloudinary.com/breivaco/image/upload/v1678184511/simplefolio/group11_a7a0kd.png',
 		],
 	},
+	{
+		id: 2,
+		name: 'Stadium Ticket Booking',
+		color: '#ffd700',
+		tags: ['#react', '#flask', '#sqlite'],
+		description:
+			'A web-based application allows users to easily browse upcoming events and securely purchase tickets online, ensuring a seamless and stress-free experience.',
+		img: 'https://res.cloudinary.com/breivaco/image/upload/v1679864215/simplefolio/booking_-_Asset_8_wkpzso.png',
+		to: '/projects/booking',
+		gallery: [
+			'https://res.cloudinary.com/breivaco/image/upload/v1679864215/simplefolio/booking_-_Asset_8_wkpzso.png',
+			'https://res.cloudinary.com/breivaco/image/upload/v1679864192/simplefolio/booking_-_Asset_10_vhc6j0.png',
+			'https://res.cloudinary.com/breivaco/image/upload/v1679864164/simplefolio/booking_-_Asset_9_wcbjco.png',
+		],
+		webImages: [
+			'https://res.cloudinary.com/breivaco/image/upload/v1679864215/simplefolio/booking_-_Asset_8_wkpzso.png',
+			'https://res.cloudinary.com/breivaco/image/upload/v1679864192/simplefolio/booking_-_Asset_10_vhc6j0.png',
+			'https://res.cloudinary.com/breivaco/image/upload/v1679864164/simplefolio/booking_-_Asset_9_wcbjco.png',
+		],
+	},
+
 	{
 		id: 4,
 		name: 'Project Manager',
@@ -135,6 +156,29 @@ export const projects: IProject[] = [
 		],
 	},
 	{
+		id: 523,
+		name: 'LoftLime - Landing Page',
+		link: 'https://leadmint.vercel.app/',
+		color: '#c4c056',
+		tags: ['#react', '#javascript', '#gsap'],
+		description:
+			'A dynamic and engaging landing page for a rewards-based app, built using React and GSAP to create smooth animations and interactive elements that enhance user experience.',
+		img: 'https://res.cloudinary.com/breivaco/image/upload/v1724828571/simplefolio/leadmint/1_-_LeadMint_-_leadmint.vercel.app_shhjgq.png',
+		to: '/projects/loftlime',
+		gallery: [
+			'https://res.cloudinary.com/breivaco/image/upload/v1724828571/simplefolio/leadmint/1_-_LeadMint_-_leadmint.vercel.app_shhjgq.png',
+			'https://res.cloudinary.com/breivaco/image/upload/v1724828571/simplefolio/leadmint/2_-_LeadMint_-_leadmint.vercel.app_raub4l.png',
+			'https://res.cloudinary.com/breivaco/image/upload/v1724828584/simplefolio/leadmint/3_-_LeadMint_-_leadmint.vercel.app_yb5uj9.png',
+			'https://res.cloudinary.com/breivaco/image/upload/v1724828569/simplefolio/leadmint/4_-_LeadMint_-_leadmint.vercel.app_dcsy99.png',
+		],
+		webImages: [
+			'https://res.cloudinary.com/breivaco/image/upload/v1724828571/simplefolio/leadmint/1_-_LeadMint_-_leadmint.vercel.app_shhjgq.png',
+			'https://res.cloudinary.com/breivaco/image/upload/v1724828571/simplefolio/leadmint/2_-_LeadMint_-_leadmint.vercel.app_raub4l.png',
+			'https://res.cloudinary.com/breivaco/image/upload/v1724828584/simplefolio/leadmint/3_-_LeadMint_-_leadmint.vercel.app_yb5uj9.png',
+			'https://res.cloudinary.com/breivaco/image/upload/v1724828569/simplefolio/leadmint/4_-_LeadMint_-_leadmint.vercel.app_dcsy99.png',
+		],
+	},
+	{
 		id: 6,
 		name: 'Autermow - Landing Page',
 		color: '#50ac29',
@@ -152,26 +196,6 @@ export const projects: IProject[] = [
 			'https://res.cloudinary.com/breivaco/image/upload/v1724614636/simplefolio/autermow/v0aenukerunqmxwnlxsh.png',
 			'https://res.cloudinary.com/breivaco/image/upload/v1724614638/simplefolio/autermow/dcql7pgdoxvb5vm9d48v.png',
 			'https://res.cloudinary.com/breivaco/image/upload/v1724614630/simplefolio/autermow/vtppuiewz90yun4u56r1.png',
-		],
-	},
-	{
-		id: 7,
-		name: 'Stayke',
-		color: '#1b8bd1',
-		tags: ['#javascript', '#react', '#nodejs', '#express', '#mongodb'],
-		description:
-			'A web application, built with React, that connects landlords and renters by displaying available apartments with location and detailed information in an easy-to-use interface.',
-		img: 'https://res.cloudinary.com/breivaco/image/upload/v1679864230/simplefolio/stayke_-_Asset_1_zjsdk2.png',
-		to: '/projects/stayke',
-		gallery: [
-			'https://res.cloudinary.com/breivaco/image/upload/v1679864230/simplefolio/stayke_-_Asset_1_zjsdk2.png',
-			'https://res.cloudinary.com/breivaco/image/upload/v1679864227/simplefolio/stayke_-_Asset_2_ko6yfo.png',
-			'https://res.cloudinary.com/breivaco/image/upload/v1679864203/simplefolio/stayke_-_Asset_3_artrs4.png',
-		],
-		webImages: [
-			'https://res.cloudinary.com/breivaco/image/upload/v1679864230/simplefolio/stayke_-_Asset_1_zjsdk2.png',
-			'https://res.cloudinary.com/breivaco/image/upload/v1679864227/simplefolio/stayke_-_Asset_2_ko6yfo.png',
-			'https://res.cloudinary.com/breivaco/image/upload/v1679864203/simplefolio/stayke_-_Asset_3_artrs4.png',
 		],
 	},
 ];

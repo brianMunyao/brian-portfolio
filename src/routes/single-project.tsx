@@ -78,6 +78,16 @@ const SingleProjectPage = () => {
 						</>
 					)}
 
+					{project.link && (
+						<>
+							<h2>Check It Out</h2>
+							<div className="link">
+								<a href={project.link} target="_blank">
+									{project.link}
+								</a>
+							</div>
+						</>
+					)}
 					<h2>Technologies Used</h2>
 					<div className="skills">
 						{project.tags.map((p, i) => (
@@ -179,6 +189,11 @@ const Container = styled.div`
 				letter-spacing: 0.4px;
 				line-height: 30px;
 			}
+
+			.link {
+				color: dodgerblue;
+			}
+
 			.skills {
 				width: 100%;
 				margin: 10px auto;
