@@ -49,6 +49,7 @@ export const projects: IProject[] = [
 		id: 7,
 		name: 'Stayke',
 		color: '#1b8bd1',
+		link: 'https://github.com/brianMunyao/stayke',
 		tags: ['#javascript', '#react', '#nodejs', '#express', '#mongodb'],
 		description:
 			'A web application, built with React, that connects landlords and renters by displaying available apartments with location and detailed information in an easy-to-use interface.',
@@ -119,6 +120,7 @@ export const projects: IProject[] = [
 		id: 4,
 		name: 'Project Manager',
 		color: '#5c4bff',
+		link: 'https://github.com/brianMunyao/pm',
 		tags: ['#react', '#mongodb', '#expressjs'],
 		description:
 			'A project management platform like monday.com that streamlines workflows, improves collaboration, and provides customizable tools for tracking progress',
