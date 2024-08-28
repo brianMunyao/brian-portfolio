@@ -4,20 +4,34 @@ import { motion } from 'framer-motion';
 
 import { projects } from '../data/projects';
 import Skill from '../components/Skill';
+import { childVariants, containerVariants } from '../constants/framer-configs';
 
 const ProjectsSection = () => {
 	return (
-		<Container id="projects" className="app-padding">
-			<p className="title p-title">Key Projects</p>
-			<p className="subtitle">
+		<Container
+			id="projects"
+			className="app-padding"
+			variants={containerVariants}
+			initial={{ opacity: 0 }}
+			whileInView={{ opacity: 1 }}
+			transition={{ duration: 0.5, ease: 'easeOut' }}
+			viewport={{ once: true, amount: 0.2 }}
+		>
+			<motion.p variants={childVariants} className="title p-title">
+				Key Projects
+			</motion.p>
+			<motion.p variants={childVariants} className="subtitle">
 				Here you will find some of my notable personal projects that I
 				created over the years.
-			</p>
+			</motion.p>
 
 			<div className="projects-grid">
 				{projects.map((project, i) => (
 					<Link to={`/projects/${project.id}`} key={i}>
-						<div className="project-card">
+						<motion.div
+							variants={childVariants}
+							className="project-card"
+						>
 							<img
 								src={project.img}
 								alt={`${project.name} main image`}
@@ -38,7 +52,7 @@ const ProjectsSection = () => {
 									))}
 								</div>
 							</div>
-						</div>
+						</motion.div>
 					</Link>
 				))}
 			</div>
