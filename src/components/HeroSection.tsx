@@ -45,10 +45,6 @@ const HeroSection = () => {
 							<IoMailOutline />
 							<span>brianmunyao6@gmail.com</span>
 						</a>
-						<a href="tel:+254714436599">
-							<IoCallOutline />
-							<span>+254714436599</span>
-						</a>
 					</div>
 				</div>
 				<div className="hero-right">
