@@ -1,9 +1,4 @@
-import {
-	IoCallOutline,
-	IoLogoGithub,
-	IoLogoLinkedin,
-	IoMailOutline,
-} from 'react-icons/io5';
+import { IoLogoGithub, IoLogoLinkedin, IoMailOutline } from 'react-icons/io5';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
