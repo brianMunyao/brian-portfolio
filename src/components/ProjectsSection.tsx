@@ -15,7 +15,7 @@ const ProjectsSection = () => {
 			initial={{ opacity: 0 }}
 			whileInView={{ opacity: 1 }}
 			transition={{ duration: 0.5, ease: 'easeOut' }}
-			viewport={{ once: true, amount: 0.2 }}
+			viewport={{ once: true }}
 		>
 			<motion.p variants={childVariants} className="title p-title">
 				Key Projects
