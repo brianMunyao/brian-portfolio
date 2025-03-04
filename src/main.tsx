@@ -9,6 +9,7 @@ import SingleProject, {
 } from './routes/single-project.tsx';
 import ContactPage from './routes/contact.tsx';
 import RootPage from './routes/root.tsx';
+import { Analytics } from '@vercel/analytics/react';
 
 const router = createBrowserRouter([
 	{
@@ -39,5 +40,6 @@ const router = createBrowserRouter([
 createRoot(document.getElementById('root')!).render(
 	<StrictMode>
 		<RouterProvider router={router} />
+		<Analytics />
 	</StrictMode>
 );
