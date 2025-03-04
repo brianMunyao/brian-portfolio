@@ -1,6 +1,7 @@
 import {
 	IoLogoCss3,
 	IoLogoDocker,
+	IoLogoFirebase,
 	IoLogoHtml5,
 	IoLogoJavascript,
 	IoLogoNodejs,
@@ -53,7 +54,14 @@ export const databases = [
 	'#realm-db',
 	'#sqlite',
 ];
-export const tools = ['#vscode', '#docker', '#jupyter', '#git', '#redux'];
+export const tools = [
+	'#vscode',
+	'#docker',
+	'#jupyter',
+	'#git',
+	'#redux',
+	'#firebase',
+];
 
 export const skills: ISkill[] = [
 	{
@@ -205,6 +213,13 @@ export const skills: ISkill[] = [
 		tag: '#realm-db',
 		backColor: '#7056bc',
 		textColor: '#e9e9e9',
+	},
+	{
+		Logo: IoLogoFirebase,
+		name: 'Firebase',
+		tag: '#firebase',
+		backColor: '#ffc400',
+		textColor: '#dd2c00',
 	},
 	{
 		Logo: ImGit,
