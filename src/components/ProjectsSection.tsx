@@ -21,31 +21,35 @@ const ProjectsSection = () => {
 				Key Projects
 			</motion.p>
 			<motion.p variants={childVariants} className="subtitle">
-				Here you will find some of my notable personal projects that I
-				created over the years.
+				Here are some of my notable personal projects built over the
+				years.
 			</motion.p>
 
 			<div className="projects-grid">
-				{projects.map((project, i) => (
-					<Link to={`/projects/${project.id}`} key={i}>
+				{projects.map((project) => (
+					<Link
+						to={`/projects/${project.id}`}
+						key={project.id}
+						aria-label={`View ${project.name}`}
+					>
 						<motion.div
-							variants={childVariants}
 							className="project-card"
+							variants={childVariants}
+							whileHover={{ scale: 1.015 }}
 						>
-							<img
-								src={project.img}
-								alt={`${project.name} main image`}
-								className="project-image"
+							<div
+								className="project-thumbnail"
 								style={{ background: project.color }}
-								loading="lazy"
-							/>
-							<div className="project-info">
-								<h3 className="project-title">
-									{project.name}
-								</h3>
-								<p className="project-description">
-									{project.description}
-								</p>
+							>
+								<img
+									src={project.img}
+									alt={`Screenshot of ${project.name}`}
+									loading="lazy"
+								/>
+							</div>
+							<div className="project-details">
+								<h3>{project.name}</h3>
+								<p>{project.description}</p>
 								<div className="project-tags">
 									{project.tags.map((tag, i) => (
 										<Skill key={i} tag={tag} brief={true} />
@@ -68,62 +72,95 @@ const Container = styled(motion.div)`
 	.projects-grid {
 		display: grid;
 		grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-		gap: 20px;
-		padding: 20px;
+		gap: 30px;
 	}
 
 	.project-card {
-		background-color: #fff;
-		border-radius: 10px;
+		height: 100%;
+		background: #ffffff;
+		border-radius: 16px;
+		box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
 		overflow: hidden;
-		box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-		transition: transform 0.3s ease;
-	}
-
-	.project-card:hover {
-		transform: translateY(-5px);
-	}
-
-	.project-image {
-		width: 100%;
-		height: 300px;
-		object-fit: contain;
-	}
-
-	.project-info {
-		padding: 15px;
-	}
-
-	.project-title {
-		font-size: 1.5rem;
-		color: #333;
-		margin-bottom: 10px;
-	}
-
-	.project-description {
-		margin-bottom: 15px;
-		color: #767676;
-	}
-
-	.project-tags {
 		display: flex;
-		flex-wrap: wrap;
-		justify-content: left;
-		gap: 10px;
-	}
+		flex-direction: column;
+		transition: all 0.1s ease;
+		cursor: pointer;
+		flex: 1;
 
-	@media (max-width: 650px) {
-		.projects-grid {
-			grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
-			row-gap: 40px;
-			padding: 10px 30px;
+		&:hover {
+			box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
 		}
 	}
 
-	@media (max-width: 550px) {
-		.projects-grid {
-			grid-template-columns: 1fr;
-			padding: 5px;
+	.project-thumbnail {
+		padding: 10px;
+		width: 100%;
+		height: 200px;
+		background-size: cover;
+		background-position: center;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		img {
+			width: 100%;
+			height: 100%;
+			object-fit: contain;
+		}
+	}
+
+	.project-details {
+		padding: 20px;
+
+		h3 {
+			margin: 0;
+			font-size: 1.4rem;
+			color: #222;
+		}
+
+		p {
+			margin: 10px 0 15px;
+			color: #666;
+			font-size: 0.95rem;
+			line-height: 1.4;
+		}
+
+		.project-tags {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 8px;
+			margin-bottom: 15px;
+
+			.tag {
+				background: #f1f1f1;
+				color: #333;
+				padding: 4px 10px;
+				border-radius: 20px;
+				font-size: 0.8rem;
+			}
+		}
+
+		.view-project {
+			font-weight: 500;
+			color: #007bff;
+			font-size: 0.9rem;
+			margin-top: auto;
+			transition: color 0.3s ease;
+
+			&:hover {
+				color: #0056b3;
+			}
+		}
+	}
+
+	@media (max-width: 600px) {
+		.project-details {
+			h3 {
+				font-size: 1.2rem;
+			}
+			p {
+				font-size: 0.9rem;
+			}
 		}
 	}
 `;
