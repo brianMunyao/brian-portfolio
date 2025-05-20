@@ -11,11 +11,21 @@ const HeroSection = () => {
 			transition={{ duration: 0.8, ease: 'easeOut' }}
 		>
 			<div className="hero-section app-padding">
-				<div className="links">
-					<a href="https://www.linkedin.com/in/brian-kalusi">
+				<div className="links" aria-label="Social Links">
+					<a
+						href="https://www.linkedin.com/in/brian-kalusi"
+						target="_blank"
+						rel="noopener noreferrer"
+						aria-label="LinkedIn"
+					>
 						<IoLogoLinkedin />
 					</a>
-					<a href="https://github.com/brianMunyao">
+					<a
+						href="https://github.com/brianMunyao"
+						target="_blank"
+						rel="noopener noreferrer"
+						aria-label="GitHub"
+					>
 						<IoLogoGithub />
 					</a>
 				</div>
@@ -29,24 +39,39 @@ const HeroSection = () => {
 						from Kenya who creates innovative solutions and bring
 						ideas to life using technology.
 					</p>
-					<Link to="/contact">
-						<button className="get-in-touch">
-							Let&apos;s Talk
-						</button>
-					</Link>
+
+					<motion.div
+						whileHover={{ scale: 1.05 }}
+						whileTap={{ scale: 0.98 }}
+						transition={{ type: 'spring', stiffness: 300 }}
+					>
+						<Link to="/contact">
+							<button className="get-in-touch">
+								Let&apos;s Build Something Amazing
+							</button>
+						</Link>
+					</motion.div>
 
 					<div className="reach-out">
-						<a href="mailto:brianmunyao6@gmail.com">
+						<a
+							href="mailto:brianmunyao6@gmail.com"
+							aria-label="Email Brian"
+						>
 							<IoMailOutline />
 							<span>brianmunyao6@gmail.com</span>
 						</a>
 					</div>
 				</div>
+
 				<div className="hero-right">
-					<i className="bi bi-code-slash"></i>
-					<img className="dots" src={'/dots.png'} alt="mypic" />
+					<i className="bi bi-code-slash" aria-hidden="true"></i>
+					<img
+						className="dots"
+						src="/dots.png"
+						alt="Decorative dots"
+					/>
 					<div className="image-con up-down-anim">
-						<img src={'/profile.jpg'} alt="mypic" />
+						<img src="/profile.jpg" alt="Brian Kalusi profile" />
 					</div>
 				</div>
 				<p className="dev-title">Full Stack Dev</p>
