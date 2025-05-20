@@ -32,7 +32,7 @@ const NavBar = ({ scrolled }: { scrolled: boolean }) => {
 			scrolled={scrolled}
 			isNavOpened={isNavOpened}
 		>
-			<div className=" nav-inner">
+			<div className="nav-inner">
 				<Link to={'/'} className="logo">
 					<img src={logo} alt="logo" />
 					<span>Brian Kalusi</span>
@@ -55,23 +55,32 @@ const NavBar = ({ scrolled }: { scrolled: boolean }) => {
 				</div>
 			</div>
 
-			<div className="mobile-nav-links">
-				<IoCloseCircle
+			<div
+				className={`mobile-nav-links ${isNavOpened ? 'open' : ''}`}
+				role="dialog"
+				aria-modal="true"
+				aria-label="Mobile Navigation Menu"
+			>
+				<div
 					className="close-nav-icon"
 					onClick={toggleNavOpened}
-				/>
+					aria-label="Close navigation menu"
+				>
+					<IoCloseCircle />
+				</div>
 
-				<div className="nav-links">
+				<nav className="nav-links" onClick={toggleNavOpened}>
 					{navLinks.map((navLink) => (
 						<a
+							key={navLink.to}
 							href={navLink.to}
-							onClick={toggleNavOpened}
 							className="nav-link"
+							tabIndex={isNavOpened ? 0 : -1}
 						>
 							{navLink.label}
 						</a>
 					))}
-				</div>
+				</nav>
 			</div>
 		</Container>
 	);
@@ -87,127 +96,149 @@ const Container = styled(motion.div)<{
 	right: 0;
 	max-width: 1380px;
 	margin: 0 auto;
-	border-radius: 16px;
-	background: #ffffffcc; /* translucent white */
-	backdrop-filter: blur(8px);
-	box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+
 	z-index: 10;
 	transition: all 0.3s ease-in-out;
 
-	& > div {
+	.nav-inner {
 		padding: 10px 20px;
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
-	}
 
-	.logo {
-		display: flex;
-		align-items: center;
-		gap: 10px;
-		font-size: ${({ scrolled }) => (scrolled ? '17px' : '22px')};
-		font-weight: 600;
-		color: #e57c00;
-		letter-spacing: 0.2px;
-		cursor: pointer;
-	}
+		border-radius: 16px;
+		background: #ffffffcc;
+		backdrop-filter: blur(8px);
+		box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
 
-	.logo img {
-		height: ${({ scrolled }) => (scrolled ? '35px' : '50px')};
-		width: auto;
-		transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-
-		&:hover {
-			transform: rotate(-90deg) scale(1.05);
+		.logo {
+			display: flex;
+			align-items: center;
+			gap: 10px;
+			font-size: ${({ scrolled }) => (scrolled ? '17px' : '22px')};
+			font-weight: 600;
+			color: #e57c00;
+			letter-spacing: 0.2px;
+			cursor: pointer;
 		}
-	}
 
-	.nav-right {
-		display: flex;
-		align-items: center;
-		gap: 25px;
-	}
+		.logo img {
+			height: ${({ scrolled }) => (scrolled ? '35px' : '50px')};
+			width: auto;
+			transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 
-	.nav-links {
-		list-style: none;
-		display: flex;
-		align-items: center;
-		gap: 25px;
-	}
-
-	.nav-links a {
-		color: rgb(100, 100, 100);
-		font-size: 15px;
-		letter-spacing: 0.4px;
-		transition: all 0.2s linear;
-
-		&:hover {
-			color: #000;
-			letter-spacing: 1px;
-			border-bottom: 1px solid grey;
+			&:hover {
+				transform: rotate(-90deg) scale(1.05);
+			}
 		}
-	}
 
-	.burger {
-		width: 40px;
-		height: 40px;
-		background: rgb(215, 215, 215);
-		border-radius: 10px;
-		font-size: 25px;
-		display: none;
-		align-items: center;
-		justify-content: center;
-		cursor: pointer;
-	}
-
-	.mobile-nav-links {
-		position: fixed;
-		top: 0;
-		right: 0;
-		z-index: 10;
-		transform: ${({ isNavOpened }) =>
-			isNavOpened ? 'translateX(0)' : 'translateX(100%)'};
-		background: #fff;
-		height: 100%;
-		width: 100%;
-		display: none;
-		justify-content: center;
-		align-items: center;
-		flex-direction: column;
-		transition: all 0.2s linear;
+		.nav-right {
+			display: flex;
+			align-items: center;
+			gap: 25px;
+		}
 
 		.nav-links {
-			flex-direction: column;
+			list-style: none;
+			display: flex;
+			align-items: center;
+			gap: 25px;
 		}
 
-		.close-nav-icon {
-			font-size: 40px;
-			margin-bottom: 10px;
-			cursor: pointer;
+		.nav-links a {
+			color: rgb(100, 100, 100);
+			font-size: 15px;
+			letter-spacing: 0.4px;
 			transition: all 0.2s linear;
 
 			&:hover {
-				font-size: 45px;
-			}
-		}
-
-		a {
-			font-size: 25px;
-			text-align: center;
-			padding: 10px 0;
-
-			&:hover {
+				color: #000;
+				letter-spacing: 1px;
 				border-bottom: 1px solid grey;
 			}
 		}
+
+		.burger {
+			width: 40px;
+			height: 40px;
+			background: rgb(215, 215, 215);
+			border-radius: 10px;
+			font-size: 25px;
+			display: none;
+			align-items: center;
+			justify-content: center;
+			cursor: pointer;
+		}
+	}
+
+	.mobile-nav-links {
+		border: 1px solid black;
+		position: fixed;
+		top: 0;
+		left: 0;
+		z-index: 100;
+		background: #fff;
+		height: 100vh;
+		width: 100vw;
+		background: #fffffffc;
+		backdrop-filter: blur(8px);
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		opacity: 0;
+		pointer-events: none;
+		transform: translateX(100%);
+		transition: all 0.3s ease;
+
+		.close-nav-icon {
+			position: absolute;
+			top: 1.5rem;
+			right: 1.5rem;
+			background: transparent;
+			border: none;
+			font-size: 2.5rem;
+			cursor: pointer;
+			transition: transform 0.2s ease;
+		}
+
+		.close-nav-icon:hover,
+		.close-nav-icon:focus {
+			transform: scale(1.1);
+			outline: none;
+		}
+
+		.nav-links {
+			display: flex;
+			flex-direction: column;
+			gap: 1.8rem;
+		}
+
+		.nav-link {
+			font-size: 1.8rem;
+			color: white;
+			text-decoration: none;
+			font-weight: 600;
+			transition: color 0.2s ease, transform 0.2s ease;
+		}
+
+		.nav-link:hover,
+		.nav-link:focus {
+			color: #e57c00;
+			transform: scale(1.05);
+			outline: none;
+		}
+	}
+
+	.mobile-nav-links.open {
+		opacity: 1;
+		pointer-events: auto;
+		transform: translateX(0);
 	}
 
 	@media screen and (max-width: 580px) {
 		top: 10px;
-		border-radius: 0;
-		max-width: 100%;
-		left: 0;
-		right: 0;
+		margin: 0 10px;
 
 		.nav-links {
 			display: none;
@@ -219,6 +250,16 @@ const Container = styled(motion.div)<{
 
 			.nav-links {
 				display: flex;
+			}
+		}
+
+		.logo img {
+			font-size: ${({ scrolled }) => (scrolled ? '17px' : '19px')};
+			width: auto;
+			transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+			&:hover {
+				transform: rotate(-90deg) scale(1.05);
 			}
 		}
 	}
