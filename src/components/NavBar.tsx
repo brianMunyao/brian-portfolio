@@ -35,7 +35,10 @@ const NavBar = ({ scrolled }: { scrolled: boolean }) => {
 			<div className="nav-inner">
 				<Link to={'/'} className="logo">
 					<img src={logo} alt="logo" />
-					<span>Brian Kalusi</span>
+					<span>
+						<span className="firstname">Brian</span>
+						Kalusi
+					</span>
 				</Link>
 
 				<div className="nav-right">
@@ -255,6 +258,11 @@ const Container = styled(motion.div)<{
 
 		.logo {
 			font-size: 17px !important;
+
+			.firstname {
+				display: none;
+			}
+
 			.logo img {
 				width: auto;
 				transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
