@@ -217,7 +217,6 @@ const Container = styled(motion.div)<{
 
 		.nav-link {
 			font-size: 1.8rem;
-			color: white;
 			text-decoration: none;
 			font-weight: 600;
 			transition: color 0.2s ease, transform 0.2s ease;
