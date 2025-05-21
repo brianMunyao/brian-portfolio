@@ -241,11 +241,11 @@ const Container = styled(motion.div)<{
 		top: 10px;
 		margin: 0 10px;
 
-		.nav-links {
+		.nav-inner .nav-links {
 			display: none;
 		}
 
-		.burger,
+		.nav-inner .burger,
 		.mobile-nav-links {
 			display: flex;
 
@@ -254,13 +254,15 @@ const Container = styled(motion.div)<{
 			}
 		}
 
-		.logo img {
-			font-size: ${({ scrolled }) => (scrolled ? '17px' : '19px')};
-			width: auto;
-			transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+		.logo {
+			font-size: 17px !important;
+			.logo img {
+				width: auto;
+				transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 
-			&:hover {
-				transform: rotate(-90deg) scale(1.05);
+				&:hover {
+					transform: rotate(-90deg) scale(1.05);
+				}
 			}
 		}
 	}
