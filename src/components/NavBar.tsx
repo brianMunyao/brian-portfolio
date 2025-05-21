@@ -96,6 +96,7 @@ const Container = styled(motion.div)<{
 	right: 0;
 	max-width: 1380px;
 	margin: 0 auto;
+	padding: 0 10px;
 
 	z-index: 10;
 	transition: all 0.3s ease-in-out;

@@ -4,7 +4,7 @@ const Footer = () => {
 	return (
 		<Container>
 			Crafted with <span style={{ fontFamily: 'serif' }}>❤️</span> by{' '}
-			<a href="https://github.com/brianMunyao">brianMunyao</a> ©️{' '}
+			<a href="https://github.com/brianMunyao">brianMunyao</a> &copy;{' '}
 			{new Date().getFullYear()}
 		</Container>
 	);

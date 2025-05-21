@@ -3,6 +3,7 @@ import { useCallback, useEffect, useState } from 'react';
 
 import NavBar from '../components/NavBar';
 import Footer from '../components/Footer';
+import SplashScreen from '../components/SplashScreen';
 
 const RootPage = () => {
 	const [scrollY, setScrollY] = useState(0);
@@ -32,6 +33,8 @@ const RootPage = () => {
 
 	return (
 		<div>
+			<SplashScreen />
+
 			<NavBar scrolled={scrollY > 130} />
 
 			<main>
