@@ -12,11 +12,11 @@ const HomePage = () => {
 
 			<ServicesSection />
 
-			<ObjectiveSection />
-
 			<SkillsSection />
 
 			<ProjectsSection />
+
+			<ObjectiveSection />
 
 			<ContactSection />
 		</div>
