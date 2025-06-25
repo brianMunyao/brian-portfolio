@@ -3,29 +3,21 @@
 import { motion } from 'motion/react';
 import { Bug, Code, Laptop, Shield, TestTube, Zap } from 'lucide-react';
 import TwoWorldFeatureCard from './two-world-feature-card';
+import SectionContainer from '../global/section-container';
 
 const TwoWorldsSection = () => {
 	return (
-		<section className="px-6 md:px-12 py-24">
+		<SectionContainer
+			id="two-worlds"
+			pillText="Clean Code. Solid Coverage."
+			customSectionTitle={
+				<h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+					Bridging <span className="text-secondary">Two Worlds</span>
+				</h2>
+			}
+			description="From crafting reliable code to ensuring rock-solid quality — I bring the best of both engineering and QA together."
+		>
 			<div className="max-w-7xl mx-auto">
-				<motion.header
-					className="text-center mb-20"
-					initial={{ opacity: 0, y: 50 }}
-					whileInView={{ opacity: 1, y: 0 }}
-					transition={{ duration: 0.8 }}
-					viewport={{ once: true }}
-				>
-					<h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
-						Bridging{' '}
-						<span className="text-secondary">Two Worlds</span>
-					</h2>
-					<p className="text-muted-foreground text-lg md:text-xl max-w-3xl mx-auto">
-						From crafting reliable code to ensuring rock-solid
-						quality—I bring the best of both engineering and QA
-						together.
-					</p>
-				</motion.header>
-
 				<div className="grid md:grid-cols-2 gap-10 md:gap-14">
 					<TwoWorldFeatureCard
 						title="Full-Stack Developer"
@@ -95,7 +87,7 @@ const TwoWorldsSection = () => {
 					</div>
 				</motion.div>
 			</div>
-		</section>
+		</SectionContainer>
 	);
 };
 

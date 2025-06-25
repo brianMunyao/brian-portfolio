@@ -4,7 +4,7 @@ export const projects: IProject[] = [
 	{
 		is_featured: true,
 		id: 'best-in-hel',
-		title: 'Best in HEL – Membership & Event Management App',
+		title: 'Best in HEL - Membership & Event Management App',
 		category: 'Co-founded Product',
 		type: 'Mobile & Web App',
 		description:
@@ -42,14 +42,13 @@ Built with React Native for cross-platform mobile compatibility and Next.js for 
 			'Co-founded the company and established technical vision and architecture',
 			'Successfully migrated no-code MVP to scalable React Native application',
 			'Achieved 2,000+ users within 6 months of launch',
-			'Secured 300% user growth rate in first 6 months',
 			'Built and deployed to both iOS App Store and Google Play Store',
 			'Integrated with 50+ local Helsinki businesses for membership perks',
 			'Processed around 10 events with zero payment processing issues',
 			'Maintained 5 app store rating across both platforms',
 		],
 		keyMetrics: {
-			'Monthly Users': '2,000+',
+			Users: '2,500+',
 			'Events Hosted': '10+',
 			'Business Partners': '50+',
 			'App Rating': '5',

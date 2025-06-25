@@ -7,6 +7,7 @@ import LabelWithCursor from '../global/label-with-cursor';
 import ProfilePhoto from '../global/profile-photo';
 import { socials } from '@/constants/socials';
 import { PointerHighlight } from '../ui/pointer-highlight';
+import Link from 'next/link';
 
 export function useParallax(value: MotionValue<number>, distance: number) {
 	return useTransform(value, [0, 1], [-distance, distance]);
@@ -95,13 +96,15 @@ const HeroSection = () => {
 						transition={{ duration: 0.6, delay: 1.8 }}
 						className="flex items-center gap-1 justify-center"
 					>
-						<Button
-							size="sm"
-							className="bg-secondary text-primary hover:bg-secondary/90 font-semibold px-4 py-2 rounded-sm text-sm shadow-lg flex items-center gap-2"
-						>
-							<GalleryHorizontalEnd className="size-4 " />
-							View Projects
-						</Button>
+						<Link href="/#projects">
+							<Button
+								size="sm"
+								className="bg-secondary text-primary hover:bg-secondary/90 font-semibold px-4 py-2 rounded-sm text-sm shadow-lg flex items-center gap-2"
+							>
+								<GalleryHorizontalEnd className="size-4 " />
+								View Projects
+							</Button>
+						</Link>
 
 						<div className="w-0.5 h-[20px] mx-5 bg-white/50"></div>
 

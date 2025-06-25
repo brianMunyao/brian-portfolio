@@ -8,6 +8,7 @@ import { Textarea } from '../ui/textarea';
 import { Send } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { usePathname } from 'next/navigation';
+import SectionContainer from '../global/section-container';
 
 const LetsTalkSection = () => {
 	const pathname = usePathname();
@@ -39,8 +40,11 @@ const LetsTalkSection = () => {
 	};
 
 	return (
-		<section
+		<SectionContainer
 			id="contact"
+			pillText="Get In Touch"
+			sectionTitle="Let's Connect"
+			description="I’d love to hear about your project idea or collaborate on something cool."
 			className={cn(
 				'relative border-t border-white/10 bg-background py-24 px-6 md:px-12',
 				{ 'pt-[150px]': pathname === '/contact' }
@@ -55,23 +59,6 @@ const LetsTalkSection = () => {
 			/>
 
 			<div className="mx-auto max-w-5xl text-center space-y-12 z-10">
-				<motion.div
-					initial={{ opacity: 0, y: -10 }}
-					whileInView={{ opacity: 1, y: 0 }}
-					transition={{ duration: 0.6 }}
-				>
-					<p className="text-sm uppercase tracking-wide text-muted-foreground z-10">
-						Get In Touch
-					</p>
-					<h2 className="text-4xl md:text-5xl font-bold text-foreground mt-2 z-10">
-						Let&apos;s Connect
-					</h2>
-					<p className="text-muted-foreground text-lg md:text-xl max-w-2xl mx-auto mt-4">
-						I’d love to hear about your project idea or collaborate
-						on something cool.
-					</p>
-				</motion.div>
-
 				<motion.form
 					id="contact-form"
 					action="https://formspree.io/f/xeqwbqlr"
@@ -150,7 +137,7 @@ const LetsTalkSection = () => {
 					</Button>
 				</motion.form>
 			</div>
-		</section>
+		</SectionContainer>
 	);
 };
 
