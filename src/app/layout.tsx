@@ -15,6 +15,9 @@ export const metadata: Metadata = {
 	title: 'Brian Kalusi | Full-Stack Developer & QA Engineer',
 	description:
 		"I'm Brian Kalusi — a full-stack developer and QA engineer crafting scalable, high-quality apps with React, Next.js, Node.js, and automated testing.",
+	icons: {
+		icon: '/favicon.ico',
+	},
 	robots: {
 		index: true,
 		follow: true,
