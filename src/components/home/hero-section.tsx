@@ -58,6 +58,7 @@ const HeroSection = () => {
 							<PointerHighlight rectangleClassName="bg-white/5">
 								<span>Brian</span>
 							</PointerHighlight>
+							<span className="sr-only">Kalusi</span>
 						</motion.span>
 
 						<motion.span
