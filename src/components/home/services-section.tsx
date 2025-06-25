@@ -1,31 +1,9 @@
 'use client';
 
 import { Laptop, Server, Smartphone } from 'lucide-react';
-import { motion, Variants } from 'framer-motion';
+import { motion } from 'framer-motion';
 import SkillHighlight from '../global/skill-highlight';
-
-const containerVariants: Variants = {
-	hidden: { opacity: 0 },
-	visible: {
-		opacity: 1,
-		transition: {
-			staggerChildren: 0.3,
-			delayChildren: 0.2,
-		},
-	},
-};
-
-const childVariants: Variants = {
-	hidden: { opacity: 0, y: 24 },
-	visible: {
-		opacity: 1,
-		y: 0,
-		transition: {
-			duration: 0.5,
-			ease: 'easeOut',
-		},
-	},
-};
+import SectionContainer from '../global/section-container';
 
 const services = [
 	{
@@ -68,40 +46,31 @@ const services = [
 
 const ServicesSection = () => {
 	return (
-		<motion.section
+		<SectionContainer
 			id="services"
-			variants={containerVariants}
-			initial="hidden"
-			whileInView="visible"
-			viewport={{ once: true, amount: 0.4 }}
-			className="py-28 px-6 md:px-12 bg-card border-t border-white/10"
+			className="bg-card border-t border-white/10"
+			pillText="What I Do"
+			sectionTitle="Let’s Build Something Modern"
+			description="From interactive UIs to robust server-side logic, here’s how I help you bring ideas to life."
 			style={{
 				backgroundColor: 'rgba(0,0,0,0.5)', // Dark base
 				color: 'oklch(0.98 0 0)', // Light foreground
 			}}
 		>
-			<motion.div
-				variants={childVariants}
-				className="text-center mb-16 max-w-3xl mx-auto"
-			>
-				<div className="mb-8 text-center inline-block bg-white/20 backdrop-blur-sm border border-white/30 rounded-full px-5 py-2 text-xs font-medium text-white shadow">
-					<span>What I Do</span>
-				</div>
-
-				<h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
-					Let’s Build Something Modern
-				</h2>
-				<p className="text-muted-foreground text-base">
-					From interactive UIs to robust server-side logic, here’s how
-					I help you bring ideas to life.
-				</p>
-			</motion.div>
-
 			<div className="grid gap-6 max-w-7xl mx-auto sm:grid-cols-2 lg:grid-cols-3">
 				{services.map(({ icon: Icon, title, desc }, i) => (
 					<motion.article
 						key={i}
-						variants={childVariants}
+						initial={{ opacity: 0, y: 24 }}
+						whileInView={{
+							opacity: 1,
+							y: 0,
+							transition: {
+								duration: 0.5,
+								ease: 'anticipate',
+								delay: 0.3 * i,
+							},
+						}}
 						className="group p-6 rounded-xl border border-border bg-muted/5 transition hover:shadow-xl h-full flex flex-col"
 					>
 						<div className="w-14 h-14 rounded-full bg-secondary/10 text-secondary flex items-center justify-center mb-4 text-xl transition-transform group-hover:scale-110">
@@ -116,7 +85,7 @@ const ServicesSection = () => {
 					</motion.article>
 				))}
 			</div>
-		</motion.section>
+		</SectionContainer>
 	);
 };
 

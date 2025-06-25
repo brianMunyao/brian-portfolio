@@ -21,23 +21,21 @@ const Navigation = ({}: NavigationProps) => {
 		// { label: 'About Me', href: '#' },
 		{ label: 'Services', href: '/#services' },
 		{ label: 'Projects', href: '/projects' },
-		// {label: 'Experience', href:'#'},
+		{ label: 'Testimonials', href: '/#testimonials' },
 	];
 
 	return (
 		<>
-			{/* Pill-shaped Navigation */}
 			<motion.nav
 				initial={{ y: -100, opacity: 0 }}
 				animate={{ y: 0, opacity: 1 }}
 				transition={{ duration: 0.8, ease: 'anticipate', delay: 0.2 }}
-				className="fixed top-6 left-1/2 transform -translate-x-1/2 z-40"
+				className="fixed top-6 left-1/2 transform -translate-x-1/2 z-40 "
 			>
 				<div className="bg-primary/95 backdrop-blur-md border border-white/10 rounded-full px-6 py-3 shadow-2xl">
 					<div className="flex items-center gap-8">
-						{/* Logo */}
 						<motion.div
-							className="flex items-center gap-2 cursor-pointer"
+							className="gap-2 cursor-pointer block w-[35px]"
 							whileHover={{ scale: 1.09 }}
 							transition={{
 								type: 'spring',
@@ -45,7 +43,7 @@ const Navigation = ({}: NavigationProps) => {
 								damping: 10,
 							}}
 						>
-							<Link href="/">
+							<Link href="/" className="block md:block">
 								<Image
 									src={logo}
 									alt="logo"

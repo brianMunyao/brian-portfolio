@@ -35,21 +35,18 @@ export default function ProjectDetailPage({ params }: Props) {
 
 	if (!project) {
 		return (
-			<div className="min-h-screen bg-gray-900 flex items-center justify-center">
-				<div className="text-center">
-					<h1 className="text-2xl font-bold text-white mb-4">
-						Project Not Found
-					</h1>
-					<Link href="/projects">
-						<motion.button
-							whileHover={{ scale: 1.05 }}
-							className="flex items-center gap-2 text-primary hover:text-primary-300 transition-colors duration-300"
-						>
-							<ArrowLeft size={20} />
-							Back to Projects
-						</motion.button>
-					</Link>
-				</div>
+			<div className="min-h-screen flex flex-col items-center justify-center">
+				<h1 className="text-2xl font-bold text-white mb-4">
+					Project Not Found
+				</h1>
+				<Link href="/projects">
+					<motion.button
+						whileHover={{ scale: 1.05 }}
+						className="cursor-pointer flex items-center gap-2 text-secondary hover:underline transition-colors duration-300"
+					>
+						Back to Projects
+					</motion.button>
+				</Link>
 			</div>
 		);
 	}
@@ -76,7 +73,6 @@ export default function ProjectDetailPage({ params }: Props) {
 						</Link>
 					</motion.div>
 
-					{/* Hero Section */}
 					<section id="overview" className="content-section mb-20">
 						<div className="text-center mb-12">
 							<motion.div
