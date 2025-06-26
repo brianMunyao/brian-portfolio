@@ -7,8 +7,6 @@ import { motion, AnimatePresence } from 'motion/react';
 import Link from 'next/link';
 import Image from 'next/image';
 
-import logo from '@/assets/logo.png';
-
 type NavigationProps = object;
 
 const Navigation = ({}: NavigationProps) => {
@@ -45,7 +43,7 @@ const Navigation = ({}: NavigationProps) => {
 						>
 							<Link href="/" className="block md:block">
 								<Image
-									src={logo}
+									src="/logo.png"
 									alt="logo"
 									width={35}
 									height={35}

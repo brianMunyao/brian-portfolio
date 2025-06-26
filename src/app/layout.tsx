@@ -12,7 +12,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-	title: 'Brian Kalusi | Full-Stack Developer & QA Engineer',
+	title: 'Brian Kalusi | Full-Stack Developer',
 	description:
 		"I'm Brian Kalusi — a full-stack developer and QA engineer crafting scalable, high-quality apps with React, Next.js, Node.js, and automated testing.",
 	icons: {
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
 		follow: true,
 	},
 	openGraph: {
-		title: 'Brian Kalusi | Full-Stack Developer & QA Engineer',
+		title: 'Brian Kalusi | Full-Stack Developer',
 		description:
 			'Explore my portfolio of software projects blending code and quality assurance.',
 		url: 'https://briankalusi.vercel.app',
