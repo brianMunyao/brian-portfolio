@@ -27,7 +27,7 @@ const HomePage = () => {
 
 			<ServicesSection />
 
-			<ProjectsSection count={3} />
+			<ProjectsSection count={4} />
 
 			<TwoWorldsSection />
 
