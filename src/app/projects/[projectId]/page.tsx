@@ -1,7 +1,6 @@
 'use client';
-
-import { use, useRef } from 'react';
-import { motion } from 'framer-motion';
+import { use, useRef, useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import {
 	ArrowLeft,
 	Github,
@@ -16,6 +15,9 @@ import {
 	Monitor,
 	ImageIcon,
 	Globe,
+	X,
+	ChevronLeft,
+	ChevronRight,
 } from 'lucide-react';
 import Link from 'next/link';
 import { projects } from '@/constants/projects';
@@ -26,12 +28,234 @@ type Props = {
 	params: Promise<{ projectId: string }>;
 };
 
+interface ImageModalProps {
+	images: string[];
+	currentIndex: number;
+	isOpen: boolean;
+	onClose: () => void;
+	onNavigate: (index: number) => void;
+	imageType: 'mobile' | 'web';
+	projectTitle: string;
+}
+
+function ImageModal({
+	images,
+	currentIndex,
+	isOpen,
+	onClose,
+	onNavigate,
+	imageType,
+	projectTitle,
+}: ImageModalProps) {
+	useEffect(() => {
+		const handleKeyDown = (e: KeyboardEvent) => {
+			if (!isOpen) return;
+
+			switch (e.key) {
+				case 'Escape':
+					onClose();
+					break;
+				case 'ArrowLeft':
+					e.preventDefault();
+					onNavigate(
+						currentIndex > 0 ? currentIndex - 1 : images.length - 1
+					);
+					break;
+				case 'ArrowRight':
+					e.preventDefault();
+					onNavigate(
+						currentIndex < images.length - 1 ? currentIndex + 1 : 0
+					);
+					break;
+			}
+		};
+
+		document.addEventListener('keydown', handleKeyDown);
+		return () => document.removeEventListener('keydown', handleKeyDown);
+	}, [isOpen, currentIndex, images.length, onClose, onNavigate]);
+
+	useEffect(() => {
+		if (isOpen) {
+			document.body.style.overflow = 'hidden';
+		} else {
+			document.body.style.overflow = 'unset';
+		}
+
+		return () => {
+			document.body.style.overflow = 'unset';
+		};
+	}, [isOpen]);
+
+	if (!isOpen) return null;
+
+	return (
+		<AnimatePresence>
+			<motion.div
+				initial={{ opacity: 0 }}
+				animate={{ opacity: 1 }}
+				exit={{ opacity: 0 }}
+				className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-sm"
+				onClick={onClose}
+			>
+				<div className="relative w-full h-full flex items-center justify-center p-4">
+					{/* Close Button */}
+					<button
+						onClick={onClose}
+						className="absolute top-4 right-4 z-10 p-2 bg-black/50 hover:bg-black/70 rounded-full text-white transition-colors"
+						aria-label="Close image viewer"
+					>
+						<X size={24} />
+					</button>
+
+					{/* Navigation Buttons */}
+					{images.length > 1 && (
+						<>
+							<button
+								onClick={(e) => {
+									e.stopPropagation();
+									onNavigate(
+										currentIndex > 0
+											? currentIndex - 1
+											: images.length - 1
+									);
+								}}
+								className="absolute left-4 z-10 p-2 bg-black/50 hover:bg-black/70 rounded-full text-white transition-colors"
+								aria-label="Previous image"
+							>
+								<ChevronLeft size={24} />
+							</button>
+							<button
+								onClick={(e) => {
+									e.stopPropagation();
+									onNavigate(
+										currentIndex < images.length - 1
+											? currentIndex + 1
+											: 0
+									);
+								}}
+								className="absolute right-4 z-10 p-2 bg-black/50 hover:bg-black/70 rounded-full text-white transition-colors"
+								aria-label="Next image"
+							>
+								<ChevronRight size={24} />
+							</button>
+						</>
+					)}
+
+					{/* Image Container */}
+					<motion.div
+						initial={{ scale: 0.8, opacity: 0 }}
+						animate={{ scale: 1, opacity: 1 }}
+						exit={{ scale: 0.8, opacity: 0 }}
+						transition={{ duration: 0.3 }}
+						className="relative max-w-7xl max-h-full"
+						onClick={(e) => e.stopPropagation()}
+					>
+						<div
+							className={`relative ${
+								imageType === 'mobile'
+									? 'max-w-md lg:max-w-lg xl:max-w-xl'
+									: 'w-full'
+							}`}
+						>
+							<Image
+								src={images[currentIndex] || '/placeholder.svg'}
+								alt={`${projectTitle} ${imageType} screenshot ${
+									currentIndex + 1
+								}`}
+								width={imageType === 'mobile' ? 600 : 1200}
+								height={imageType === 'mobile' ? 900 : 800}
+								className={`object-contain max-h-[90vh] w-auto ${
+									imageType === 'mobile'
+										? 'rounded-2xl'
+										: 'rounded-lg'
+								}`}
+								priority
+							/>
+						</div>
+
+						{/* Image Info */}
+						<div className="absolute bottom-4 left-4 right-4 bg-black/70 rounded-lg p-4 text-white">
+							<div className="flex items-center justify-between">
+								<div>
+									<h3 className="font-semibold">
+										{projectTitle} -{' '}
+										{imageType === 'mobile'
+											? 'Mobile'
+											: 'Web'}{' '}
+										View
+									</h3>
+									<p className="text-sm text-gray-300">
+										Image {currentIndex + 1} of{' '}
+										{images.length}
+									</p>
+								</div>
+								{images.length > 1 && (
+									<div className="flex gap-1">
+										{images.map((_, index) => (
+											<button
+												key={index}
+												onClick={() =>
+													onNavigate(index)
+												}
+												className={`w-2 h-2 rounded-full transition-colors ${
+													index === currentIndex
+														? 'bg-white'
+														: 'bg-white/40 hover:bg-white/60'
+												}`}
+												aria-label={`Go to image ${
+													index + 1
+												}`}
+											/>
+										))}
+									</div>
+								)}
+							</div>
+						</div>
+					</motion.div>
+				</div>
+			</motion.div>
+		</AnimatePresence>
+	);
+}
+
 export default function ProjectDetailPage({ params }: Props) {
 	const { projectId } = use(params);
-
 	const project = projects.find((p) => p.id === projectId);
-
 	const pageRef = useRef<HTMLDivElement>(null);
+
+	// Modal state
+	const [modalState, setModalState] = useState<{
+		isOpen: boolean;
+		images: string[];
+		currentIndex: number;
+		imageType: 'mobile' | 'web';
+	}>({
+		isOpen: false,
+		images: [],
+		currentIndex: 0,
+		imageType: 'mobile',
+	});
+
+	const openModal = (
+		images: string[],
+		index: number,
+		type: 'mobile' | 'web'
+	) => {
+		setModalState({
+			isOpen: true,
+			images,
+			currentIndex: index,
+			imageType: type,
+		});
+	};
+
+	const closeModal = () => {
+		setModalState((prev) => ({ ...prev, isOpen: false }));
+	};
+
+	const navigateModal = (index: number) => {
+		setModalState((prev) => ({ ...prev, currentIndex: index }));
+	};
 
 	if (!project) {
 		return (
@@ -81,28 +305,12 @@ export default function ProjectDetailPage({ params }: Props) {
 								transition={{ duration: 0.8 }}
 								className="mb-6"
 							>
-								{/* <div className="flex items-center justify-center gap-4 mb-6">
-									<span
-										className="px-6 py-3 rounded-full text-sm font-medium text-white"
-										style={{
-											backgroundColor: project.color,
-										}}
-									>
-										{project.category}
-									</span>
-									<span className="px-4 py-2 bg-gray-800 text-gray-300 rounded-full text-sm border border-gray-700">
-										{project.year}
-									</span>
-								</div> */}
-
 								<h1 className="text-5xl md:text-6xl font-bold text-white mb-6 leading-tight">
 									{project.title}
 								</h1>
-
 								<p className="text-xl text-gray-300 leading-relaxed mb-8 max-w-4xl mx-auto">
 									{project.description}
 								</p>
-
 								{/* Action Buttons */}
 								<div className="flex flex-wrap gap-4 justify-center mb-12">
 									{project.repo_link && (
@@ -151,7 +359,6 @@ export default function ProjectDetailPage({ params }: Props) {
 									)}
 								</div>
 							</motion.div>
-
 							{/* Project Meta Grid */}
 							<motion.div
 								initial={{ opacity: 0, y: 20 }}
@@ -159,18 +366,6 @@ export default function ProjectDetailPage({ params }: Props) {
 								transition={{ duration: 0.8, delay: 0.2 }}
 								className="items-center justify-center flex gap-6 max-w-4xl mx-auto"
 							>
-								{/* <div className="bg-gray-800/50 rounded-xl p-6 border border-gray-700">
-									<Calendar
-										size={24}
-										className="text-primary mb-3 mx-auto"
-									/>
-									<div className="text-sm text-gray-400 mb-1">
-										Year
-									</div>
-									<div className="text-white font-semibold">
-										{project.year}
-									</div>
-								</div> */}
 								<div className="bg-gray-800/50 rounded-xl p-6 border border-gray-700">
 									<Tag
 										size={24}
@@ -183,18 +378,6 @@ export default function ProjectDetailPage({ params }: Props) {
 										{project.type}
 									</div>
 								</div>
-								{/* <div className="bg-gray-800/50 rounded-xl p-6 border border-gray-700">
-									<Users
-										size={24}
-										className="text-green-400 mb-3 mx-auto"
-									/>
-									<div className="text-sm text-gray-400 mb-1">
-										Status
-									</div>
-									<div className="text-white font-semibold">
-										{project.status}
-									</div>
-								</div> */}
 								<div className="bg-gray-800/50 rounded-xl p-6 border border-gray-700">
 									<TrendingUp
 										size={24}
@@ -239,6 +422,7 @@ export default function ProjectDetailPage({ params }: Props) {
 								</h2>
 							</div>
 
+							{/* Mobile Images */}
 							{project.mobileImages &&
 								project.mobileImages.length > 0 && (
 									<div className="mb-16">
@@ -250,8 +434,10 @@ export default function ProjectDetailPage({ params }: Props) {
 											<h3 className="text-2xl font-semibold text-white">
 												Mobile Experience
 											</h3>
+											<span className="text-sm text-gray-400 ml-2">
+												Click to view full size
+											</span>
 										</div>
-
 										<div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
 											{project.mobileImages.map(
 												(image, index) => (
@@ -265,11 +451,19 @@ export default function ProjectDetailPage({ params }: Props) {
 														transition={{
 															duration: 0.3,
 														}}
+														onClick={() =>
+															openModal(
+																project.mobileImages!,
+																index,
+																'mobile'
+															)
+														}
 													>
 														<div className="relative rounded-2xl overflow-hidden shadow-lg border border-gray-700 group-hover:border-primary/50 transition-colors duration-300">
 															<Image
 																src={
 																	image ||
+																	'/placeholder.svg' ||
 																	'/placeholder.svg'
 																}
 																alt={`${
@@ -284,13 +478,15 @@ export default function ProjectDetailPage({ params }: Props) {
 																	index === 0
 																}
 															/>
-
 															<div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-
 															<div className="absolute bottom-4 left-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
 																<p className="text-white text-sm font-medium">
 																	Mobile View{' '}
 																	{index + 1}
+																</p>
+																<p className="text-gray-300 text-xs">
+																	Click to
+																	enlarge
 																</p>
 															</div>
 														</div>
@@ -313,8 +509,10 @@ export default function ProjectDetailPage({ params }: Props) {
 											<h3 className="text-2xl font-semibold text-white">
 												Web Experience
 											</h3>
+											<span className="text-sm text-gray-400 ml-2">
+												Click to view full size
+											</span>
 										</div>
-
 										<div className="grid grid-cols-1 md:grid-cols-2 gap-8">
 											{project.webImages.map(
 												(image, index) => (
@@ -328,11 +526,19 @@ export default function ProjectDetailPage({ params }: Props) {
 														transition={{
 															duration: 0.3,
 														}}
+														onClick={() =>
+															openModal(
+																project.webImages!,
+																index,
+																'web'
+															)
+														}
 													>
 														<div className="relative aspect-video rounded-2xl overflow-hidden shadow-xl border border-gray-700 group-hover:border-primary/50 transition-colors duration-300">
 															<img
 																src={
 																	image ||
+																	'/placeholder.svg' ||
 																	'/placeholder.svg'
 																}
 																alt={`${
@@ -350,8 +556,8 @@ export default function ProjectDetailPage({ params }: Props) {
 																	{index + 1}
 																</div>
 																<div className="text-gray-300 text-sm">
-																	Desktop
-																	Experience
+																	Click to
+																	enlarge
 																</div>
 															</div>
 														</div>
@@ -402,7 +608,6 @@ export default function ProjectDetailPage({ params }: Props) {
 									The Thinking Process
 								</h2>
 							</div>
-
 							<div
 								style={{
 									backgroundColor: 'oklch(0.22 0.025 180)', // Card
@@ -415,7 +620,6 @@ export default function ProjectDetailPage({ params }: Props) {
 								</p>
 							</div>
 						</motion.div>
-
 						{/* Key Metrics */}
 						{project.keyMetrics && (
 							<motion.div
@@ -464,7 +668,6 @@ export default function ProjectDetailPage({ params }: Props) {
 									Key Features
 								</h2>
 							</div>
-
 							<div className="grid grid-cols-1 md:grid-cols-2 gap-6">
 								{project.features.map((feature, index) => (
 									<motion.div
@@ -507,7 +710,6 @@ export default function ProjectDetailPage({ params }: Props) {
 									Technology Stack
 								</h2>
 							</div>
-
 							<div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
 								{/* Technologies */}
 								<div>
@@ -546,7 +748,6 @@ export default function ProjectDetailPage({ params }: Props) {
 										))}
 									</div>
 								</div>
-
 								{/* Platform Support */}
 								<div>
 									<h3 className="text-xl font-semibold text-white mb-4">
@@ -600,7 +801,6 @@ export default function ProjectDetailPage({ params }: Props) {
 									Impact & Achievements
 								</h2>
 							</div>
-
 							{project.achievements && (
 								<div className="space-y-4">
 									{project.achievements.map(
@@ -635,6 +835,17 @@ export default function ProjectDetailPage({ params }: Props) {
 					</section>
 				</div>
 			</div>
+
+			{/* Image Modal */}
+			<ImageModal
+				images={modalState.images}
+				currentIndex={modalState.currentIndex}
+				isOpen={modalState.isOpen}
+				onClose={closeModal}
+				onNavigate={navigateModal}
+				imageType={modalState.imageType}
+				projectTitle={project.title}
+			/>
 		</div>
 	);
 }
