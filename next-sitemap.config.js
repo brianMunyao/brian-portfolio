@@ -1,5 +1,5 @@
 module.exports = {
-	siteUrl: 'https://briankalusi.vercel.app',
+	siteUrl: 'https://kalusi.dev',
 	generateRobotsTxt: true,
 	generateIndexSitemap: false,
 };
