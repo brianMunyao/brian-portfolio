@@ -56,6 +56,7 @@ const SectionContainer = ({
 			viewport={{ once: true }}
 			className={cn('py-28 px-6 md:px-12', className)}
 			style={style}
+			aria-labelledby={sectionTitle ? `${id}-title` : undefined}
 		>
 			<motion.div
 				variants={childVariants}
@@ -67,16 +68,19 @@ const SectionContainer = ({
 					</div>
 				)}
 
-				{sectionTitle ? (
-					<h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+				{sectionTitle && (
+					<h2
+						className="text-4xl md:text-5xl font-bold text-white mb-4"
+						id={`${id}-title`}
+					>
 						{sectionTitle}
 					</h2>
-				) : customSectionTitle ? (
-					customSectionTitle
-				) : null}
+				)}
+
+				{customSectionTitle}
 
 				{description && (
-					<p className="tracking-wide font-extralight">
+					<p className="tracking-wide font-extralight text-white/70">
 						{description}
 					</p>
 				)}
