@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion } from 'motion/react';
+import { motion, useSpring } from 'motion/react';
 
 import { cn } from '@/lib/utils';
 import { Pointer } from '../ui/pointer-highlight';
@@ -17,6 +17,9 @@ const LabelWithCursor = ({
 	className = ' left-8 md:left-20',
 	variant = 'filled',
 }: Props) => {
+	const x = useSpring(0, { stiffness: 300, damping: 30 });
+	const y = useSpring(0, { stiffness: 300, damping: 30 });
+
 	return (
 		<motion.div
 			className={cn(
@@ -25,7 +28,7 @@ const LabelWithCursor = ({
 			)}
 			initial={{
 				opacity: 0,
-				x: -50,
+				x: cursorLocation === 'top-left' ? 50 : -50,
 				rotate: cursorLocation === 'top-right' ? -10 : 10,
 			}}
 			animate={{
@@ -34,7 +37,18 @@ const LabelWithCursor = ({
 				rotate: cursorLocation === 'top-right' ? -5 : 5,
 			}}
 			transition={{ duration: 0.8, delay: 0.5 }}
-			whileHover={{ scale: 1.1, rotate: 0 }}
+			style={{ x, y }}
+			onMouseMove={(e) => {
+				const rect = e.currentTarget.getBoundingClientRect();
+				const centerX = rect.left + rect.width / 2;
+				const centerY = rect.top + rect.height / 2;
+				x.set((e.clientX - centerX) * -0.1);
+				y.set((e.clientY - centerY) * -0.1);
+			}}
+			onMouseLeave={() => {
+				x.set(0);
+				y.set(0);
+			}}
 		>
 			<div
 				className={cn(

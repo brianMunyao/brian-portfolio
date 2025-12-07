@@ -8,6 +8,7 @@ import ProfilePhoto from '../global/profile-photo';
 import { socials } from '@/constants/socials';
 import { PointerHighlight } from '../ui/pointer-highlight';
 import Link from 'next/link';
+import AnimatedGridPattern from '@/components/ui/animated-grid-pattern';
 
 export function useParallax(value: MotionValue<number>, distance: number) {
 	return useTransform(value, [0, 1], [-distance, distance]);
@@ -22,18 +23,12 @@ const HeroSection = () => {
 			className="min-h-screen flex flex-col items-center justify-center px-6 md:px-12 py-20 relative"
 			style={{ y: yTransform }}
 		>
-			{/* Greeting Pill */}
-			{/* <motion.div
-				className="mb-8"
-				initial={{ opacity: 0, y: -20 }}
-				animate={{ opacity: 1, y: 0 }}
-				transition={{ duration: 0.6, delay: 0.3 }}
-			>
-				<div className="bg-white/20 backdrop-blur-sm border border-white/30 rounded-full px-5 py-3 text-xs font-medium text-white shadow-lg">
-					<span>Hi 👋, Let&apos;s Build Something Amazing</span>
-				</div>
-			</motion.div> */}
-
+			<AnimatedGridPattern
+				numSquares={50}
+				maxOpacity={0.05}
+				duration={4}
+				className="[mask-image:radial-gradient(800px_circle_at_center,white,transparent)] inset-0"
+			/>
 			{/* Main Content Container */}
 			<motion.div
 				style={{ y }}
@@ -69,14 +64,6 @@ const HeroSection = () => {
 						>
 							a Software Engineer
 						</motion.span>
-						{/* <motion.span
-							className="text-center block text-white"
-							initial={{ opacity: 0, y: 20 }}
-							animate={{ opacity: 1, y: 0 }}
-							transition={{ duration: 0.6, delay: 1 }}
-						>
-							a <FlipWords words={['Software', 'QA']} /> Engineer
-						</motion.span> */}
 					</h1>
 
 					{/* Description */}
